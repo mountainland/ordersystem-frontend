@@ -10,6 +10,7 @@ class OrderForm(forms.ModelForm):
         self.fields['contact'].widget.attrs.update({'class': 'form-control'})
         self.fields['count'].widget.attrs.update({'class': 'form-control'})
         self.fields['address'].widget.attrs.update({'class': 'form-control',})
+        self.fields['count'].widget.attrs['min'] = 1
         self.fields['name'].label = "Nimi"
         self.fields['contact'].label = "Puhelinnumero"
         self.fields['count'].label = "Määrä"
