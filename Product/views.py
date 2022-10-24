@@ -6,11 +6,11 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 
 
-
+@method_decorator(login_required, name='dispatch')
 class ProductListView(ListView):
     model = Product
 
-
+@method_decorator(login_required, name='dispatch')
 class ProductDetailView(DetailView):
     model = Product
 
