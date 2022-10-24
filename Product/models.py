@@ -34,11 +34,11 @@ class Order(models.Model):
 
     # Fields
     name = models.CharField(max_length=255)
-    contact = models.CharField(max_length=10, null=True, blank=True)
+    contact = models.CharField(max_length=10)
     slug = extension_fields.AutoSlugField(populate_from='name', blank=True)
     created = models.DateTimeField(auto_now_add=True, editable=False)
     last_updated = models.DateTimeField(auto_now=True, editable=False)
-    address = models.TextField(blank=True, null=True)
+    address = models.TextField()
     count = models.IntegerField(default=1)
     cost = models.IntegerField(default=0)
     delivered = models.BooleanField(default=False)
