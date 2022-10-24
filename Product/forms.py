@@ -10,6 +10,10 @@ class OrderForm(forms.ModelForm):
         self.fields['contact'].widget.attrs.update({'class': 'form-control'})
         self.fields['count'].widget.attrs.update({'class': 'form-control'})
         self.fields['address'].widget.attrs.update({'class': 'form-control',})
+        self.fields['name'].label = "Nimi"
+        self.fields['contact'].label = "Puhelinnumero"
+        self.fields['count'].label = "Määrä"
+        self.fields['address'].label = "Osoite"
     class Meta:
         model = Order
         fields = ['count', 'name','contact','address', ]

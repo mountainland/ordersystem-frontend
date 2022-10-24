@@ -15,7 +15,6 @@ class Product(models.Model):
     last_updated = models.DateTimeField(auto_now=True, editable=False)
     description = models.TextField(blank=True, null=True)
     price = models.FloatField(blank=True, null=True)
-    image = models.ImageField(upload_to="media/Product-images/", null=True, blank=True)
 
     class Meta:
         ordering = ('category', '-created',)

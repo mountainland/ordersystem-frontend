@@ -7,11 +7,7 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <h2>{{product.name|upper}} - {{product.price}}/-</h2>
-        </div>
-        <div class="col-6">
-
-            <img src="{{product.image.url}}" class="card-img-top" alt="...">
+            <h2>{{product.name|upper}} - {{product.price}}€</h2>
         </div>
         <div class="col-md-6">
 
@@ -20,7 +16,7 @@
 
             {{form|crispy}}<br>
                 <div class="col-12 text-right">
-                    <button type="submit" class="btn btn-primary  btn-lg btn-block">Order</button>
+                    <button type="submit" class="btn btn-primary  btn-lg btn-block">Tilaa</button>
                 </div>
             </form>
 

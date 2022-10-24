@@ -7,15 +7,15 @@
     <table class="table">
     <tr>
         <td>#</td>
-        <td>Product</td>
-        <td>Count</td>
-        <td>cost</td>
-        <td>Ordered On</td>
-        <td>Last Update</td>
-        <td>Name</td>
-        <td>Delivery To</td>
-        <td>Delivered</td>
-        <td>Delivered On</td>
+        <td>Tuote</td>
+        <td>Määrä</td>
+        <td>Summa</td>
+        <td>Tilattu</td>
+        <td>Viimeksi päivitetty</td>
+        <td>Nimi</td>
+        <td>Toimitettu</td>
+        <td>Toimitettu</td>
+        <td>Toimitettu</td>
     </tr>
     {% for object in object_list %}
     <tr>
@@ -29,12 +29,12 @@
         <td>{{ object.address }}</td>
         <td>
             {% if object.delivered %}
-                <p class="text-success">delivered</p>
+                <p class="text-success">Toimitettu</p>
             {% else %}
-                <p class="text-danger">Will be delivered</p>
+                <p class="text-danger">Toimitetaan</p>
             {% endif %}
         </td>
-        <td>{{ object.delivered_on | default:"Soon"}}</td>
+        <td>{{ object.delivered_on | default:"Pian"}}</td>
     </tr>
     {% endfor %}
 </div>
