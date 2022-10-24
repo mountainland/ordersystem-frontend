@@ -11,24 +11,13 @@
             <div class="card" style="width: 18rem; margin-top:10px">
               <div class="card-body">
                 <h5 class="card-title">{{object.name | truncatewords:5}}</h5>
-                <p class="card-text">{{object.description | truncatewords:10}}</p>
-                <a href="{% url 'Product_product_detail' object.slug %}" class="btn btn-primary">Tilaa nyt</a>
+                <p class="card-text">{{object.price}}</p>
+                <a href="{% url 'Product_order_create' object.slug %}" class="btn btn-primary">Tilaa nyt</a>
               </div>
             </div>
         </div>
     {% endfor %}
 </div>
-
-
-
-
-
-
-
-
-
-
-
 <br>
 <br>
 <br>
