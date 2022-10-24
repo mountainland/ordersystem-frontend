@@ -14,7 +14,7 @@
             <form method="post">
             {% csrf_token %}
             <label for="id_count" class="control-label requiredField">Määrä<span class="asteriskField">*</span></label>
-            <input type="number" name="count" value="1" class="form-control numberinput" min="1" max="100" required id="id_count">
+            <input type="number" name="count" value="1" class="form-control numberinput" min="1" max="100" required id="id_count" pattern="\d*">
             <label for="id_name" class="control-label requiredField">Nimi<span class="asteriskField">*</span></label> 
             <input type="text" name="name" maxlength="255" class="form-control textinput textInput" required id="id_name">
             <label for="id_contact" class="control-label requiredField">Puhelinnumero<span class="asteriskField">*</span></label>
