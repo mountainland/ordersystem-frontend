@@ -15,4 +15,3 @@ urlpatterns = (
     path('order/create/<slug:slug>', views.OrderCreateView.as_view(), name='Product_order_create'),
     path('order/detail/<slug:slug>/', views.OrderDetailView.as_view(), name='Product_order_detail'),
 )
-
