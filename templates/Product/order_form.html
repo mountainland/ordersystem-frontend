@@ -20,11 +20,11 @@
             <label for="id_contact" class="control-label requiredField">Puhelinnumero<span class="asteriskField">*</span></label>
             <input type="text" name="contact" maxlength="10" class="form-control textinput textInput" required id="id_contact">
             <label for="id_address" class="control-label requiredField">Osoite<span class="asteriskField">*</span></label>
-            <input name="address" cols="40" rows="10" class="form-control textarea" required id="id_address"></textarea>
+            <input name="address" class="form-control textarea" required id="id_address"></textarea>
             <label for="id_postcode" class="control-label requiredField">Postinumero<span class="asteriskField">*</span></label>
-            <input type="number" name="count" value="00500" class="form-control numberinput"  minlength="5"maxlenght="5" required id="id_postcode" pattern="\d*">
+            <input type="number" name="postcode" value="00500" class="form-control numberinput"  minlength="5"maxlenght="5" required id="id_postcode" pattern="\d*">
             <label for="id_city" class="control-label requiredField">Kaupunki<span class="asteriskField">*</span></label>
-            <input name="city" class="control-label requiredField" required id="id_city"></textarea>
+            <input name="city" class="form-control textarea" required id="id_city"></textarea>
             <br>
             <br>
             <button type="submit" class="btn btn-primary  btn-lg btn-block">Tilaa</button>
