@@ -39,7 +39,7 @@ class Migration(migrations.Migration):
                 ('created', models.DateTimeField(auto_now_add=True)),
                 ('last_updated', models.DateTimeField(auto_now=True)),
                 ('address', models.CharField(max_length=255)),
-                ('postcode', models.IntegerField()),
+                ('postcode', models.CharField(max_length=5)),
                 ('city', models.CharField(max_length=255)),
                 ('delivered', models.BooleanField(default=False)),
                 ('delivered_on', models.DateTimeField(blank=True, null=True)),
