@@ -39,7 +39,7 @@ class Order(models.Model):
     created = models.DateTimeField(auto_now_add=True, editable=False)
     last_updated = models.DateTimeField(auto_now=True, editable=False)
     address = models.CharField(max_length=255)
-    postcode = models.IntegerField()
+    postcode = models.CharField(max_length=5)
     city = models.CharField(max_length=255)
     count = models.IntegerField(default=1)
     cost = models.IntegerField(default=0)
