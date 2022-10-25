@@ -5,4 +5,4 @@ django-extensions
 Pillow==9.2.0
 pytz==2022.5
 six==1.16.0
-sqlparse==0.3.0
+sqlparse==0.4.3
