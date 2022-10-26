@@ -22,14 +22,14 @@ class OrderListView(ListView):
     model = Order
 
     def get_queryset(self):
-        return Order.objects.filter(order_by=self.request.user)
+        return Order.objects.all().filter(order_by=self.request.user)
 
 @method_decorator(staff_member_required, name='dispatch')
 class OrderAdminView(ListView):
     model = Order
 
-    def get_query(self):
-        return Order.objects
+    def get_queryset(self):
+        return Order.objects.all().filter(delivered=False)
 
 
 

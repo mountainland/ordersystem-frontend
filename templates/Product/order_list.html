@@ -3,7 +3,7 @@
 {% block nav_order %} active {% endblock nav_order %}
 {% block content %}
 <div class="container">
-    <p><a class="btn btn-default" href="{% url 'Product_order_list' %}">Tilaukset</a></p>
+    <p><a class="btn btn-default" href="{% url 'Product_order_list' %}">Ordersting</a></p>
     <table class="table">
     <tr>
         <td>#</td>
@@ -15,7 +15,7 @@
         <td>Nimi</td>
         <td>Osoite</td>
         <td>Status</td>
-        <td>Toimitus aika</td>
+        <td>Toimitusaika</td>
     </tr>
     {% for object in object_list %}
     <tr>
