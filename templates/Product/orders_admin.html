@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+{% block nav_order %} active {% endblock nav_order %}
+{% block content %}
+<div class="container">
+    <p><a class="btn btn-default" href="{% url 'Product_order_list' %}">Order Listing</a></p>
+    <table class="table">
+    <tr>
+        <td>#</td>
+        <td>Tuote</td>
+        <td>Määrä</td>
+        <td>Summa</td>
+        <td>Tilattu</td>
+        <td>Viimeksi päivitetty</td>
+        <td>Nimi</td>
+        <td>Toimitettu</td>
+        <td>Toimitettu</td>
+        <td>Toimitettu</td>
+    </tr>
+    {% for object in object_list %}
+    <tr>
+        <td>{{forloop.counter}}</td>
+        <td><a href="{{object.get_absolute_url}}">{{object.product.name|upper}}</a></td>
+        <td>{{ object.count }}</td>
+        <td>{{ object.cost }}/-</td>
+        <td>{{ object.created }}</td>
+        <td>{{ object.last_updated }}</td>
+        <td>{{ object.name }}</td>
+        <td>{{ object.address }}</td>
+        <td>
+            {% if object.delivered %}
+                <p class="text-success">Toimitettu</p>
+            {% else %}
+                <p class="text-danger">Toimitetaan</p>
+            {% endif %}
+        </td>
+        <td>{{ object.delivered_on | default:"Pian"}}</td>
+    </tr>
+    {% endfor %}
+</div>
+{% endblock %}

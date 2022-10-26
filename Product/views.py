@@ -4,6 +4,8 @@ from .forms import OrderForm
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from django.contrib.admin.views.decorators import staff_member_required
+
 
 
 @method_decorator(login_required, name='dispatch')
@@ -21,6 +23,14 @@ class OrderListView(ListView):
 
     def get_queryset(self):
         return Order.objects.filter(order_by=self.request.user)
+
+@method_decorator(staff_member_required, name='dispatch')
+class OrderAdminView(ListView):
+    model = Order
+
+    def get_query(self):
+        return Order.objects
+
 
 
 @method_decorator(login_required, name='dispatch')
