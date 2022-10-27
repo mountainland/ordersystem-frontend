@@ -6,6 +6,48 @@
 <style>
     .center {text-align: center;align-self: center;}
 </style>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script type="text/javascript">
+    function showDiv(select){
+       if(select.value=="cash"){
+            document.getElementById('cash_div').style.display = "block";
+            document.getElementById('mobilepay_div').style.display = "none";
+            document.getElementById('transfer_div').style.display = "none";
+       } else if (select.value=="mobilepay"){
+            document.getElementById('cash_div').style.display = "none";
+            document.getElementById('mobilepay_div').style.display = "block";
+            document.getElementById('transfer_div').style.display = "none";
+       } else if (select.value=="transfer"){
+            document.getElementById('cash_div').style.display = "none";
+            document.getElementById('mobilepay_div').style.display = "none";
+            document.getElementById('transfer_div').style.display = "block";
+       }
+    } 
+    function cityt(select){
+        if (select.value=="Helsinki"){
+            document.getElementById('Helsinki').style.display = "block";
+            document.getElementById('Espoo').style.display = "none";
+            document.getElementById('Vantaa').style.display = "none";
+            document.getElementById('Kauniainen').style.display = "none";
+        } else if (select.value=="Espoo"){
+            document.getElementById('Helsinki').style.display = "none";
+            document.getElementById('Espoo').style.display = "block";
+            document.getElementById('Vantaa').style.display = "none";
+            document.getElementById('Kauniainen').style.display = "none";
+        } else if (select.value=="Vantaa"){
+            document.getElementById('Helsinki').style.display = "none";
+            document.getElementById('Espoo').style.display = "none";
+            document.getElementById('Vantaa').style.display = "block";
+            document.getElementById('Kauniainen').style.display = "none";
+        } else if (select.value=="Kauniainen"){
+            document.getElementById('Helsinki').style.display = "none";
+            document.getElementById('Espoo').style.display = "none";
+            document.getElementById('Vantaa').style.display = "none";
+            document.getElementById('Kauniainen').style.display = "block";
+        }
+    }
+</script>
+
 <div class="container">
     <div class="row">
         <div class="col-12">
@@ -13,20 +55,35 @@
             <h2 class="center">{{product.name|upper}} - {{product.price}}€</h2>
             <form method="post">
             {% csrf_token %}
+            <!-- MÄÄRÄ -->
             <label for="id_count" class="control-label requiredField">Määrä<span class="asteriskField">*</span></label>
-            <input type="number" name="count" value="1" class="form-control numberinput" min="1" max="100" required id="id_count" pattern="\d*">
-            <label for="id_name" class="control-label requiredField">Nimi<span class="asteriskField">*</span></label> 
+            <input type="number" name="count" value="1" class="form-control numberinput" min="1" max="1000" required id="id_count" pattern="\d*">
+
+            <!-- TILAAJAN NIMI -->
+            <label for="id_name" class="control-label requiredField">Tilaajan nimi<span class="asteriskField">*</span></label> 
             <input type="text" name="name" maxlength="255" class="form-control textinput textInput" required id="id_name">
+            <!-- PUHELINNUMERO -->
             <label for="id_contact" class="control-label requiredField">Puhelinnumero<span class="asteriskField">*</span></label>
             <input type="text" name="contact" maxlength="10" class="form-control textinput textInput" required id="id_contact">
+            
+            <!-- OSOITE -->
             <label for="id_address" class="control-label requiredField">Osoite<span class="asteriskField">*</span></label>
             <input name="address" class="form-control textarea" required id="id_address"></input>
+            
+            <!-- POSTINUMERO -->
             <label for="id_postcode" class="control-label requiredField">Postinumero<span class="asteriskField">*</span></label>
             <input type="number" name="postcode" value="00500" class="form-control numberinput"  minlength="5"maxlenght="5" required id="id_postcode" pattern="\d*">
+                        
+            <!-- KAUPUNKI -->
             <label for="id_city" class="control-label requiredField">Kaupunki<span class="asteriskField">*</span></label>
-            <input name="city" class="form-control textarea" required id="id_city"></input>
-            <label for="id_information" class="control-label">Lisätiedot</label>
-            <input name="information" id="id_information" class="form-control textarea" id="id_information"></input>
+            <select name="city" id="id_city" class="form-control dropdown" onchange="cityt(this)">
+                <option value="" selected disabled hidden>Valitse kaupunki</option>
+                <option value="Helsinki">Helsinki</option>
+                <option value="Espoo">Espoo</option>
+                <option value="Vantaa">Vantaa</option>
+                <option value="Kauniainen">Kauniainen</option>
+            </select>
+            <!-- MAKSUTAPA -->
             <label for="id_payment_method" class="control-label requiredField">Maksutapa<span class="asteriskField">*</span></label>
             <select name="payment_method" id="id_payment_method" class="form-control dropdown" onchange="showDiv(this)">
                 <option value="" selected disabled hidden>Valitse</option>
@@ -34,28 +91,20 @@
                 <option value="mobilepay">MobilePay</option>
                 <option value="transfer">Tilisiirto</option>
             </select>
-            <div id="mobilepay_div" style="display:none;">Maksa MobilePaylla puhelinnumeroon NUMERO</div>
-            <div id="transfer_div" style="display:none;">Maksa tilisiirrolla tilille TILINUMERO</div>
-            <div id="cash_div" style="display:none;">Käteisellä maksaessa sitoudut olemaan paikalla, kun tuote toimitetaan</div>
-            <script type="text/javascript">
-                function showDiv(select){
-                   if(select.value=="cash"){
-                    document.getElementById('cash_div').style.display = "block";
-                    document.getElementById('mobilepay_div').style.display = "none";
-                    document.getElementById('transfer_div').style.display = "none";
-                   } else if (select.value=="mobilepay"){
-                    document.getElementById('cash_div').style.display = "none";
-                    document.getElementById('mobilepay_div').style.display = "block";
-                    document.getElementById('transfer_div').style.display = "none";
-                   } else if (select.value=="transfer"){
-                    document.getElementById('cash_div').style.display = "none";
-                    document.getElementById('mobilepay_div').style.display = "none";
-                    document.getElementById('transfer_div').style.display = "block";
-                   }
-                } 
-            </script>
+
+            <label for="id_information" class="control-label">Lisätiedot</label>
+            <input name="information" id="id_information" class="form-control textarea" id="id_information"></input>
             <br>
-            <br>
+            <!-- MAKSUTAVAT -->
+            <div id="mobilepay_div" class="w3-panel w3-yellow" style="display:none;">Maksa MobilePaylla puhelinnumeroon NUMERO</div>
+            <div id="transfer_div" class="w3-panel w3-yellow" style="display:none;">Maksa tilisiirrolla tilille TILINUMERO</div>
+            <div id="cash_div" class="w3-panel w3-yellow" style="display:none;">Käteisellä maksaessa sitoudut olemaan paikalla, kun tuote toimitetaan</div>
+
+            <!-- KAUPUNGIT -->
+            <div id="Helsinki" class="w3-panel w3-blue" style="display:none;">Helsingissä ruoat toimitetaan PP.KK kello HH.MM-HH.MM</div>
+            <div id="Espoo" class="w3-panel w3-blue" style="display:none;">Espoossa ruoat toimitetaan PP.KK kello HH.MM-HH.MM</div>
+            <div id="Vantaa" class="w3-panel w3-blue" style="display:none;">Vantaa ruoat toimitetaan PP.KK kello HH.MM-HH.MM</div>
+            <div id="Kauniainen" class="w3-panel w3-blue" style="display:none;">Kauniainen ruoat toimitetaan PP.KK kello HH.MM-HH.MM</div>
             <button type="submit" class="btn btn-primary  btn-lg btn-block">Tilaa</button>
             </form>
         </div>
