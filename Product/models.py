@@ -43,6 +43,8 @@ class Order(models.Model):
     city = models.CharField(max_length=255)
     count = models.IntegerField(default=1)
     cost = models.IntegerField(default=0)
+    information = models.CharField(max_length=500)
+    payment_method = models.CharField(max_length=20)
     delivered = models.BooleanField(default=False)
     delivered_on = models.DateTimeField(blank=True, null=True)
     # Relationship Fields
