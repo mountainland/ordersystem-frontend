@@ -11,6 +11,20 @@
         <tr><td>Tuotteen kuvaus</td><td>{{ object.product.description }}</td></tr>
         <tr><td>Hinta</td><td>{{ object.product.price }}/-</td></tr>
         <tr><td>Osoite</td><td>{{ object.address }}</td></tr>
+        <tr><td>Kaupunki</td><td>{{ object.city }}</td></tr>
+        <tr><td>Toimitetaan</td><td>
+            {% if not object.delivered %}
+                {% if object.city == 'Helsinki' %}
+                    <p class="text-warning">Helsingissä tilaukset toimitetaan xx.xx kello xx.xx ja xx.xx välillä</p>
+                {% elif object.city == 'Espoo' %}
+                    <p class="text-warning">Espoossa tilaukset toimitetaan xx.xx kello xx.xx ja xx.xx välillä</p>
+                {% elif object.city == 'Vantaa' %}
+                    <p class="text-warning">Vantaalla tilaukset toimitetaan xx.xx kello xx.xx ja xx.xx välillä</p>
+                {% elif object.city == 'Kauniainen' %}
+                    <p class="text-warning">Kauniaisissa tilaukset toimitetaan xx.xx kello xx.xx ja xx.xx välillä</p>
+                {% else %}
+                    <p class="text-warning">Kaupunkiasi ei ole kaupunki listassa, ota yhteyttä asiakaspalveluun</p>
+        </td></tr>
         <tr><td>Toimitettu</td><td>
             {% if object.delivered %}
                 <p class="text-success">Toimitettu</p>
@@ -20,6 +34,7 @@
         </td></tr>
         <tr><td>Toimitettu henkilölle</td><td>{{ object.name }}</td></tr>
         <tr><td>Toimitettu osoitteeseen</td><td>{{ object.address }}</td></tr>
+        
         </table>
         {% if not object.delivered %}
             <div class="col-12 text-right">
