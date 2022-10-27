@@ -24,6 +24,7 @@
                     <p class="text-warning">Kauniaisissa tilaukset toimitetaan xx.xx kello xx.xx ja xx.xx välillä</p>
                 {% else %}
                     <p class="text-warning">Kaupunkiasi ei ole kaupunki listassa, ota yhteyttä asiakaspalveluun</p>
+                {% endif %}
         </td></tr>
         <tr><td>Toimitettu</td><td>
             {% if object.delivered %}
@@ -34,7 +35,6 @@
         </td></tr>
         <tr><td>Toimitettu henkilölle</td><td>{{ object.name }}</td></tr>
         <tr><td>Toimitettu osoitteeseen</td><td>{{ object.address }}</td></tr>
-        
         </table>
         {% if not object.delivered %}
             <div class="col-12 text-right">
