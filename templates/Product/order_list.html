@@ -19,6 +19,7 @@
         <td>Status</td>
         <td>Toimitusaika</td>
         <td>Lisätiedot</td>
+        <td>Maksutapa</td>
     </tr>
     {% for object in object_list %}
     <tr>
@@ -41,6 +42,7 @@
         </td>
         <td>{{ object.delivered_on | default:"Pian"}}</td>
         <td>{{ object.information }}</td>
+        <td>{{ object.payment_method }}</td>
     </tr>
     {% endfor %}
 </div>
