@@ -12,6 +12,8 @@ class OrderForm(forms.ModelForm):
         self.fields['address'].widget.attrs.update({'class': 'form-control',})
         self.fields['postcode'].widget.attrs.update({'class': 'form-control',})
         self.fields['city'].widget.attrs.update({'class': 'form-control'})
+        self.fields['information'].widget.attrs.update({'class': 'form-control'})
+        self.fields['payment_method'].widget.attrs.update({'class': 'form-control'})
         self.fields['count'].widget.attrs['min'] = 1
         self.fields['count'].widget.attrs['max'] = 100
         self.fields['name'].label = "Nimi"
@@ -20,7 +22,8 @@ class OrderForm(forms.ModelForm):
         self.fields['address'].label = "Osoite"
         self.fields['postcode'].label = "Postinumero"
         self.fields['city'].label = 'Kaupunki'
+        self.fields['information'].label = 'Lisätiedot'
     class Meta:
         model = Order
-        fields = ['count', 'name','contact','address', 'postcode', 'city',]
+        fields = ['count', 'name','contact','address', 'postcode', 'city', 'information','payment_method',]
 

@@ -14,8 +14,11 @@
         <td>Viimeksi päivitetty</td>
         <td>Nimi</td>
         <td>Osoite</td>
+        <td>Postinumero</td>
+        <td>Kaupunki</td>
         <td>Status</td>
         <td>Toimitusaika</td>
+        <td>Lisätiedot</td>
     </tr>
     {% for object in object_list %}
     <tr>
@@ -27,6 +30,8 @@
         <td>{{ object.last_updated }}</td>
         <td>{{ object.name }}</td>
         <td>{{ object.address }}</td>
+        <td>{{ object.postcode }}</td>
+        <td>{{ object.city }}</td>
         <td>
             {% if object.delivered %}
                 <p class="text-success">Toimitettu</p>
@@ -35,6 +40,7 @@
             {% endif %}
         </td>
         <td>{{ object.delivered_on | default:"Pian"}}</td>
+        <td>{{ object.information }}</td>
     </tr>
     {% endfor %}
 </div>
