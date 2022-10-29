@@ -58,7 +58,6 @@
             <!-- MÄÄRÄ -->
             <label for="id_count" class="control-label requiredField">Määrä<span class="asteriskField">*</span></label>
             <input type="number" name="count" value="1" class="form-control numberinput" min="1" max="1000" required id="id_count" pattern="\d*">
-
             <!-- TILAAJAN NIMI -->
             <label for="id_name" class="control-label requiredField">Tilaajan nimi<span class="asteriskField">*</span></label> 
             <input type="text" name="name" maxlength="255" class="form-control textinput textInput" required id="id_name">
@@ -95,6 +94,9 @@
             <label for="id_information" class="control-label">Lisätiedot</label>
             <input name="information" id="id_information" class="form-control textarea" id="id_information"></input>
             <br>
+            
+            <button type="submit" class="btn btn-primary  btn-lg btn-block">Tilaa</button>
+            </form>
             <!-- MAKSUTAVAT -->
             <div id="mobilepay_div" class="w3-panel w3-yellow" style="display:none;">Maksa MobilePaylla puhelinnumeroon NUMERO</div>
             <div id="transfer_div" class="w3-panel w3-yellow" style="display:none;">Maksa tilisiirrolla tilille TILINUMERO</div>
@@ -105,9 +107,11 @@
             <div id="Espoo" class="w3-panel w3-blue" style="display:none;">Espoossa ruoat toimitetaan PP.KK kello HH.MM-HH.MM</div>
             <div id="Vantaa" class="w3-panel w3-blue" style="display:none;">Vantaa ruoat toimitetaan PP.KK kello HH.MM-HH.MM</div>
             <div id="Kauniainen" class="w3-panel w3-blue" style="display:none;">Kauniainen ruoat toimitetaan PP.KK kello HH.MM-HH.MM</div>
-            <button type="submit" class="btn btn-primary  btn-lg btn-block">Tilaa</button>
-            </form>
+            <p id="sum">Kokonaissumma </p>
         </div>
     </div>
 </div>
+<script>
+    document.getElementById("sum").innerHTML += document.getElementById("id_count").value * {{ product.price }};
+</script>
 {% endblock %}
