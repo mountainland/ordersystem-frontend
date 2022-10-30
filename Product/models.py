@@ -41,17 +41,19 @@ class Order(models.Model):
     address = models.CharField(max_length=255)
     postcode = models.CharField(max_length=5)
     city = models.CharField(max_length=255)
-    count = models.IntegerField(default=1)
+    count_1 = models.IntegerField(default=0)
+    product_1 = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="orders", null=True, blank=True)
+    count_2 = models.IntegerField(default=0)
+    product_2 = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="orders", null=True, blank=True)
+    count_3 = models.IntegerField(default=0)
+    product_3 = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="orders", null=True, blank=True)
     cost = models.IntegerField(default=0)
     information = models.CharField(max_length=500)
     payment_method = models.CharField(max_length=20)
     delivered = models.BooleanField(default=False)
     delivered_on = models.DateTimeField(blank=True, null=True)
     # Relationship Fields
-    product = models.ForeignKey(
-        Product,
-        on_delete=models.CASCADE, related_name="orders", null=True, blank=True
-    )
+    
     order_by = CurrentUserField(blank=True, null=True, related_name="orders_user", on_delete=models.CASCADE)
 
     class Meta:
