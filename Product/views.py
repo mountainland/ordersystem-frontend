@@ -41,15 +41,20 @@ class OrderCreateView(CreateView):
 
     def get_context_data(self,  object_list=None, **kwargs):
         context = super(OrderCreateView, self).get_context_data(**kwargs)
-        context['product'] = get_object_or_404(Product, slug=self.kwargs['slug'])
+        context['product_1'] = get_object_or_404(Product, slug="mokkapala")
+        context['product_2'] = get_object_or_404(Product, slug="pipari")
+        context['product_3'] = get_object_or_404(Product, slug="feta")
         return context
 
 
     def form_valid(self, form):
-        slug = self.kwargs.get('slug')
-        product = Product.objects.get(slug__iexact=slug)
-        form.instance.product = product
-        form.instance.cost = int(form.instance.count) * int(product.price)
+        product_1 = Product.objects.get(slug__iexact='mokkapala')
+        product_2 = Product.objects.get(slug__iexact='pipari')
+        product_3 = Product.objects.get(slug__iexact='feta')
+        form.instance.product_1 = product_1
+        form.instance.product_2 = product_2
+        form.instance.product_3 = product_3
+        form.instance.cost = ((int(form.instance.count_1) * int(product_1.price)) + (int(form.instance.count_2) * int(product_2.price)) + (int(form.instance.count_3) * int(product_3.price)))
         return super(OrderCreateView, self).form_valid(form)
 
 @method_decorator(login_required, name='dispatch')
