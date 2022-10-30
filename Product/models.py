@@ -73,3 +73,4 @@ class Order(models.Model):
             if not self.delivered_on:
                 self.delivered_on = timezone.now()
         super(Order, self).save(*args, **kwargs)
+

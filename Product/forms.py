@@ -1,8 +1,6 @@
 from django import forms
 from .models import Product, Order
 
-
-
 class OrderForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -23,7 +21,7 @@ class OrderForm(forms.ModelForm):
         self.fields['postcode'].label = "Postinumero"
         self.fields['city'].label = 'Kaupunki'
         self.fields['information'].label = 'Lisätiedot'
+
     class Meta:
         model = Order
         fields = ['count', 'name','contact','address', 'postcode', 'city', 'information','payment_method',]
-
