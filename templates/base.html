@@ -29,7 +29,7 @@
       {% endif %}
       {% if user.is_superuser %}
       <li class="nav-item">
-        <a class="nav-link {% block nav_admin_orders %}{% endblock nav_admin_orders %}" href="{% url 'Product_orders_admin' %}"
+        <a class="nav-link {% block nav_admin_orders %}{% endblock nav_admin_orders %}" href="{% url 'Product_orders_admin' %}">Kaikki tilaukset</a>
       </li>
       {% endif %}
     </ul>
@@ -46,10 +46,9 @@
         <li class="nav-item">
           <a class="nav-link" href="{% url 'login' %}">Kirjaudu sisään</a>
         </li>
-
-        <li class="nav-item">
+        <!--<li class="nav-item">
           <a class="nav-link" href="{% url 'signup' %}">Luo tili</a>
-        </li>
+        </li>-->
       {% endif %}
 
     </ul>
