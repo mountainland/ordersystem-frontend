@@ -42,11 +42,11 @@ class Order(models.Model):
     postcode = models.CharField(max_length=5)
     city = models.CharField(max_length=255)
     count_1 = models.IntegerField(default=0)
-    product_1 = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="orders", null=True, blank=True)
+    product_1 = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="Order.product_1+", null=True, blank=True) #57
     count_2 = models.IntegerField(default=0)
-    product_2 = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="orders", null=True, blank=True)
+    product_2 = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="Order.product_2+", null=True, blank=True) #57
     count_3 = models.IntegerField(default=0)
-    product_3 = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="orders", null=True, blank=True)
+    product_3 = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="Order.product_3+", null=True, blank=True) #FIXME #57
     cost = models.IntegerField(default=0)
     information = models.CharField(max_length=500)
     payment_method = models.CharField(max_length=20)
