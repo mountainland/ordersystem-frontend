@@ -114,14 +114,15 @@
             <div id="Espoo" class="w3-panel w3-blue" style="display:none;">Espoossa ruoat toimitetaan PP.KK kello HH.MM-HH.MM</div>
             <div id="Vantaa" class="w3-panel w3-blue" style="display:none;">Vantaa ruoat toimitetaan PP.KK kello HH.MM-HH.MM</div>
             <div id="Kauniainen" class="w3-panel w3-blue" style="display:none;">Kauniainen ruoat toimitetaan PP.KK kello HH.MM-HH.MM</div>
-            <p id="sum">Kokonaissumma </p>
+            <p>Summa: </p>
+            <p id="sum"></p>
         </div>
     </div>
 </div>
-<script>    
+<script type="text/javascript">    
     function calculateStuff(){
-    document.getElementById("sum").innerHTML = document.getElementById("id_count1").value * {{ product.price }};
+    document.getElementById("sum").innerHTML = ((document.getElementById("id_count_1").value * {{ product_1.price }}) + (document.getElementById("id_count_2").value * {{ product_2.price }}) + (document.getElementById("id_count_3").value * {{ product_3.price }}));
 }
-document.getElementById("sum").innerHTML = document.getElementById("id_count1").value * {{ product.price }};
+document.getElementById("sum").innerHTML = ((document.getElementById("id_count_1").value * {{ product_1.price }}) + (document.getElementById("id_count_2").value * {{ product_2.price }}) + (document.getElementById("id_count_3").value * {{ product_3.price }}));
 </script>
 {% endblock %}
