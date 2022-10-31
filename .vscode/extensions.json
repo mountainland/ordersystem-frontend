@@ -1,5 +1,6 @@
 {
     "recommendations": [
-        "wayou.vscode-todo-highlight"
+        "wayou.vscode-todo-highlight",
+        "thebarkman.vscode-djaneiro"
     ]
 }
