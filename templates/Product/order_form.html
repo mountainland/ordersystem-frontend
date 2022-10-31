@@ -57,13 +57,13 @@
             {% csrf_token %}
             <!-- MÄÄRÄ -->
             <label for="id_count_1" class="control-label requiredField">{{product_1.name|lower}} määrä<span class="asteriskField">*</span></label>
-            <input type="number" name="count_1" value="1" class="form-control numberinput" onchange="calculateStuff();" min="1" max="1000" required id="id_count_1" pattern="\d*">
+            <input type="number" name="count_1" min="0" class="form-control numberinput" onchange="calculateStuff();" min="0" max="1000" required id="id_count_1" pattern="\d*">
             <p> Hinta {{product_1.price}}€</p>
             <label for="id_count_2" class="control-label requiredField">{{product_2.name|lower}} määrä<span class="asteriskField">*</span></label>
-            <input type="number" name="count_2" value="1" class="form-control numberinput" onchange="calculateStuff();" min="1" max="1000" required id="id_count_2" pattern="\d*">
+            <input type="number" name="count_2" min="0" class="form-control numberinput" onchange="calculateStuff();" min="0" max="1000" required id="id_count_2" pattern="\d*">
             <p> Hinta {{product_2.price}}€</p>
             <label for="id_count_3" class="control-label requiredField">{{product_3.name|lower}} määrä<span class="asteriskField">*</span></label>
-            <input type="number" name="count_3" value="1" class="form-control numberinput" onchange="calculateStuff();" min="1" max="1000" required id="id_count_3" pattern="\d*">
+            <input type="number" name="count_3" min="0" class="form-control numberinput" onchange="calculateStuff();" min="0" max="1000" required id="id_count_3" pattern="\d*">
             <p> Hinta {{product_3.price}}€</p>
             <!-- TILAAJAN NIMI -->
             <label for="id_name" class="control-label requiredField">Tilaajan nimi<span class="asteriskField">*</span></label> 
