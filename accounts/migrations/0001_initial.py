@@ -16,12 +16,12 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='signup-codes',
+            name='Code',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('code', models.CharField(max_length=8)),
                 ('created', models.DateTimeField(auto_now_add=True)),
-                ('used', models.BooleanField()),
+                ('used', models.BooleanField(default=False)),
             ],
         ),
     ]

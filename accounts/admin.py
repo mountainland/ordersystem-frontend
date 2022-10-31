@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-class SignupCodesAdmin(admin.ModelAdmin):
-    list_display = ('',)
+class CodesAdmin(admin.ModelAdmin):
+    list_display = ('id','created','code','used')
 
-admin.site.register(SignupCode, SignupCodesAdmin)
+admin.site.register(Code, CodesAdmin)
