@@ -11,7 +11,7 @@ USERMODEL = get_user_model()
 def SignUp(request):
     if (request.POST):
         signup_data = request.POST
-        username1 = signup_data["username"]
+        username = signup_data["username"]
         password1 = signup_data["password1"]
         password2 = signup_data["password2"]
         if password1 == password2:
@@ -19,8 +19,8 @@ def SignUp(request):
         else:
             return render(request, 'registration/signup.html')
         signup_code = signup_data["signup_code"]
-        if Code.objects.filter(code=signup_code, used=False).exists():
-            USERMODEL.objects.create_user(username=username1, password=password)
+        if Code.objects.filter(code=signup_code, used=False).exists() and not USERMODEL.objects.filter(username=username).first():
+            USERMODEL.objects.create_user(username=username, password=password)
             code = Code.objects.get(code=signup_code)
             code.used = True
             code.save()
