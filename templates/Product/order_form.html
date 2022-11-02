@@ -93,9 +93,9 @@
             <label for="id_payment_method" class="control-label requiredField">Maksutapa<span class="asteriskField">*</span></label>
             <select name="payment_method" id="id_payment_method" class="form-control dropdown" onchange="showDiv(this)">
                 <option value="" selected disabled hidden>Valitse</option>
-                <option value="cash">Käteinen</option>
-                <option value="mobilepay">MobilePay</option>
-                <option value="transfer">Tilisiirto</option>
+                {% for payment_method in Payment_method %}
+                <option value="{{payment_method.name}}">{{payment_method.name}}</option>
+                {% endfor %}
             </select>
 
             <label for="id_information" class="control-label">Lisätiedot</label>
