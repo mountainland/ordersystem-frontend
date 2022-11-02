@@ -1,3 +1,6 @@
 from django.db import models
 
-# Create your models here.
+class City(models.Model):
+    name = models.CharField(max_length=50)
+    short = models.CharField(max_length=5)
+    delivery_date = models.DateTimeField(auto_now_add=False)

@@ -5,6 +5,8 @@ from django.conf import settings
 from django_extensions.db import fields as extension_fields
 from django.utils import timezone
 from django_currentuser.db.models import CurrentUserField
+from Payment.models import Payment_method
+from City.models import City
 class Product(models.Model):
 
     # Fields
@@ -29,15 +31,6 @@ class Product(models.Model):
     def get_update_url(self):
         return reverse('Product_product_update', args=(self.slug,))
 
-
-class Payment_method(models.Model):
-    name = models.CharField(max_length=10)
-    info_text = models.CharField(max_length=255)
-    
-    def __str__(self):
-        return u'%s' % self.name
-    def info(self):
-        return u'%s' % self.info_text
 class Order(models.Model):
 
     # Fields
@@ -48,7 +41,7 @@ class Order(models.Model):
     last_updated = models.DateTimeField(auto_now=True, editable=False)
     address = models.CharField(max_length=255)
     postcode = models.CharField(max_length=5)
-    city = models.CharField(max_length=255)
+    city = models.ForeignKey(City, on_delete=models.CASCADE)
     count_1 = models.IntegerField(default=0)
     product_1 = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="Order.product_1+", null=True, blank=True) #57
     count_2 = models.IntegerField(default=0)

@@ -14,8 +14,3 @@ class OrderAdmin(admin.ModelAdmin):
     readonly_fields = ['slug','order_by', 'created', 'last_updated']
 
 admin.site.register(Order, OrderAdmin)
-
-class Payment_methodAdmin(admin.ModelAdmin):
-    list_display = ['name', 'info_text']
-
-admin.site.register(Payment_method, Payment_methodAdmin)
