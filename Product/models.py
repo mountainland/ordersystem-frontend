@@ -33,7 +33,11 @@ class Product(models.Model):
 class Payment_method(models.Model):
     name = models.CharField(max_length=10)
     info_text = models.CharField(max_length=255)
-
+    
+    def __str__(self):
+        return u'%s' % self.name
+    def info(self):
+        return u'%s' % self.info_text
 class Order(models.Model):
 
     # Fields

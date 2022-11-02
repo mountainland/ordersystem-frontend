@@ -9,19 +9,14 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script type="text/javascript">
     function showDiv(select){
-       if(select.value=="cash"){
-            document.getElementById('cash_div').style.display = "block";
-            document.getElementById('mobilepay_div').style.display = "none";
-            document.getElementById('transfer_div').style.display = "none";
-       } else if (select.value=="mobilepay"){
-            document.getElementById('cash_div').style.display = "none";
-            document.getElementById('mobilepay_div').style.display = "block";
-            document.getElementById('transfer_div').style.display = "none";
-       } else if (select.value=="transfer"){
-            document.getElementById('cash_div').style.display = "none";
-            document.getElementById('mobilepay_div').style.display = "none";
-            document.getElementById('transfer_div').style.display = "block";
+    {% for payment_method in Payment_method %}
+       if(select.value=="{{payment_method}}"){
+            {% for payment in Payment_method %}
+            document.getElementById('{{payment_method}}_div').style.display="none";
+            {% endfor %}
+            document.getElementById('{{payment_method}}_div').style.display = "block";
        }
+    {% endfor %}
     } 
     function cityt(select){
         if (select.value=="Helsinki"){
@@ -94,7 +89,7 @@
             <select name="payment_method" id="id_payment_method" class="form-control dropdown" onchange="showDiv(this)">
                 <option value="" selected disabled hidden>Valitse</option>
                 {% for payment_method in Payment_method %}
-                <option value="{{payment_method.name}}">{{payment_method.name}}</option>
+                <option value="{{payment_method}}">{{payment_method}}</option>
                 {% endfor %}
             </select>
 
@@ -105,9 +100,9 @@
             <button type="submit" class="btn btn-primary  btn-lg btn-block">Tilaa</button>
             </form>
             <!-- MAKSUTAVAT -->
-            <div id="mobilepay_div" class="w3-panel w3-yellow" style="display:none;">Maksa MobilePaylla puhelinnumeroon NUMERO</div>
-            <div id="transfer_div" class="w3-panel w3-yellow" style="display:none;">Maksa tilisiirrolla tilille TILINUMERO</div>
-            <div id="cash_div" class="w3-panel w3-yellow" style="display:none;">Käteisellä maksaessa sitoudut olemaan paikalla, kun tuote toimitetaan</div>
+            {% for payment_method in Payment_method %}
+            <div id="{{payment_method}}_div" class="w3-panel w3-yellow" style="display:none;">{{payment_method.info}}</div>
+            {% endfor %}
 
             <!-- KAUPUNGIT -->
             <div id="Helsinki" class="w3-panel w3-blue" style="display:none;">Helsingissä ruoat toimitetaan PP.KK kello HH.MM-HH.MM</div>
