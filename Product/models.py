@@ -30,6 +30,10 @@ class Product(models.Model):
         return reverse('Product_product_update', args=(self.slug,))
 
 
+class Payment_method(models.Model):
+    name = models.CharField(max_length=10)
+    info_text = models.CharField(max_length=255)
+
 class Order(models.Model):
 
     # Fields
@@ -49,7 +53,7 @@ class Order(models.Model):
     product_3 = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="Order.product_3+", null=True, blank=True) #FIXME #57
     cost = models.IntegerField(default=0)
     information = models.CharField(max_length=500)
-    payment_method = models.CharField(max_length=20)
+    payment_method = models.ForeignKey(Payment_method, on_delete=models.CASCADE)
     delivered = models.BooleanField(default=False)
     delivered_on = models.DateTimeField(blank=True, null=True)
     # Relationship Fields
@@ -75,3 +79,4 @@ class Order(models.Model):
             if not self.delivered_on:
                 self.delivered_on = timezone.now()
         super(Order, self).save(*args, **kwargs)
+
