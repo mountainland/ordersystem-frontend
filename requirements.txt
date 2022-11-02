@@ -1,4 +1,4 @@
-Django==4.1.2
+Django==3.2.15
 django-crispy-forms==1.14.0
 django-currentuser==0.5.3
 django-extensions==3.2.1
