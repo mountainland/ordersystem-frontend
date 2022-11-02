@@ -49,7 +49,7 @@ class Order(models.Model):
     count_3 = models.IntegerField(default=0)
     product_3 = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="Order.product_3+", null=True, blank=True) #FIXME #57
     cost = models.IntegerField(default=0)
-    information = models.CharField(max_length=500)
+    information = models.CharField(max_length=500, null=True,blank=True)
     payment_method = models.ForeignKey(Payment_method, on_delete=models.CASCADE)
     delivered = models.BooleanField(default=False)
     delivered_on = models.DateTimeField(blank=True, null=True)

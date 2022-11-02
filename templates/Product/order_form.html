@@ -19,27 +19,14 @@
     {% endfor %}
     } 
     function cityt(select){
-        if (select.value=="Helsinki"){
-            document.getElementById('Helsinki').style.display = "block";
-            document.getElementById('Espoo').style.display = "none";
-            document.getElementById('Vantaa').style.display = "none";
-            document.getElementById('Kauniainen').style.display = "none";
-        } else if (select.value=="Espoo"){
-            document.getElementById('Helsinki').style.display = "none";
-            document.getElementById('Espoo').style.display = "block";
-            document.getElementById('Vantaa').style.display = "none";
-            document.getElementById('Kauniainen').style.display = "none";
-        } else if (select.value=="Vantaa"){
-            document.getElementById('Helsinki').style.display = "none";
-            document.getElementById('Espoo').style.display = "none";
-            document.getElementById('Vantaa').style.display = "block";
-            document.getElementById('Kauniainen').style.display = "none";
-        } else if (select.value=="Kauniainen"){
-            document.getElementById('Helsinki').style.display = "none";
-            document.getElementById('Espoo').style.display = "none";
-            document.getElementById('Vantaa').style.display = "none";
-            document.getElementById('Kauniainen').style.display = "block";
+        {% for city in City %}
+        if (select.value=="{{city.short}}"){
+            {% for city in City %}
+            document.getElementById("{{city.short}}").style.display = "none";
+            {% endfor %}
+            document.getElementById('{{city.short}}').style.display = "block";
         }
+        {% endfor %}
     }
 </script>
 
@@ -79,10 +66,9 @@
             <label for="id_city" class="control-label requiredField">Kaupunki<span class="asteriskField">*</span></label>
             <select name="city" id="id_city" class="form-control dropdown" onchange="cityt(this)">
                 <option value="" selected disabled hidden>Valitse kaupunki</option>
-                <option value="Helsinki">Helsinki</option>
-                <option value="Espoo">Espoo</option>
-                <option value="Vantaa">Vantaa</option>
-                <option value="Kauniainen">Kauniainen</option>
+                {% for city in City %}
+                <option value="{{city.short}}">{{city.name}}</option>
+                {% endfor %}
             </select>
             <!-- MAKSUTAPA -->
             <label for="id_payment_method" class="control-label requiredField">Maksutapa<span class="asteriskField">*</span></label>
@@ -105,10 +91,9 @@
             {% endfor %}
 
             <!-- KAUPUNGIT -->
-            <div id="Helsinki" class="w3-panel w3-blue" style="display:none;">Helsingissä ruoat toimitetaan PP.KK kello HH.MM-HH.MM</div>
-            <div id="Espoo" class="w3-panel w3-blue" style="display:none;">Espoossa ruoat toimitetaan PP.KK kello HH.MM-HH.MM</div>
-            <div id="Vantaa" class="w3-panel w3-blue" style="display:none;">Vantaa ruoat toimitetaan PP.KK kello HH.MM-HH.MM</div>
-            <div id="Kauniainen" class="w3-panel w3-blue" style="display:none;">Kauniainen ruoat toimitetaan PP.KK kello HH.MM-HH.MM</div>
+            {% for city in City %}
+            <div id="{{city.short}}" class="w3-panel w3-blue" style="display:none;">Kaupungissa '{{city.name}}' ruoat toimitetaan {{city.delivery_date}}</div>
+            {% endfor %}
             <p>Summa: </p>
             <p id="sum"></p>
         </div>
