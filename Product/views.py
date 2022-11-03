@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.contrib.admin.views.decorators import staff_member_required
 
+PRODS = []
 
 @method_decorator(login_required, name='dispatch')
 class ProductListView(ListView):
@@ -43,6 +44,7 @@ class OrderCreateView(CreateView):
         count = 1
         for product in Product.objects.all():
             context[f'product_{count}'] = product
+            PRODS.append(str(product))
             count += 1
         context['Payment_method'] = Payment_method.objects.all()
         context["City"] = City.objects.all()
@@ -51,9 +53,9 @@ class OrderCreateView(CreateView):
 
     def form_valid(self, form):
         print(form.is_valid())
-        product_1 = Product.objects.get(slug__iexact='feta')
-        product_2 = Product.objects.get(slug__iexact='pipari')
-        product_3 = Product.objects.get(slug__iexact='mokkapala')
+        product_1 = Product.objects.get(slug__iexact=PRODS[0])
+        product_2 = Product.objects.get(slug__iexact=PRODS[1])
+        product_3 = Product.objects.get(slug__iexact=PRODS[2])
         form.instance.product_1 = product_1
         form.instance.product_2 = product_2
         form.instance.product_3 = product_3
