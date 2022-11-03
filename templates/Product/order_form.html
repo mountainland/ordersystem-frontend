@@ -20,7 +20,7 @@
     } 
     function cityt(select){
         {% for city in City %}
-        if (select.value=="{{city.short}}"){
+        if (select.value=="{{city.name}}"){
             {% for city in City %}
             document.getElementById("{{city.short}}").style.display = "none";
             {% endfor %}
@@ -67,7 +67,7 @@
             <select name="city" id="id_city" class="form-control dropdown" onchange="cityt(this)">
                 <option value="" selected disabled hidden>Valitse kaupunki</option>
                 {% for city in City %}
-                <option value="{{city.short}}">{{city.name}}</option>
+                <option value="{{city.name}}">{{city.name}}</option>
                 {% endfor %}
             </select>
             <!-- MAKSUTAPA -->
@@ -80,7 +80,7 @@
             </select>
 
             <label for="id_information" class="control-label">Lisätiedot</label>
-            <input name="information" id="id_information" class="form-control textarea" id="id_information">
+            <input name="information" id="id_information" class="form-control" id="id_information">
             <br>
             
             <button type="submit" class="btn btn-primary  btn-lg btn-block">Tilaa</button>
