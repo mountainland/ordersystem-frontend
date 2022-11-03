@@ -9,7 +9,7 @@ from django.contrib.contenttypes.models import ContentType
 
 def create_django_contrib_auth_models_user(**kwargs):
     defaults = {}
-    defaults["username"] = "username"
+    defaults["username"] = "username111"
     defaults["email"] = "username@tempurl.com"
     defaults.update(**kwargs)
     return User.objects.create(**defaults)
@@ -30,10 +30,8 @@ def create_django_contrib_contenttypes_models_contenttype(**kwargs):
 
 def create_product(**kwargs):
     defaults = {}
-    defaults["name"] = "name"
-    defaults["description"] = "description"
-    defaults["stock"] = "stock"
-    defaults["price"] = "price"
+    defaults["name"] = "Mokka"
+    defaults["price"] = "3"
     defaults.update(**kwargs)
     return Product.objects.create(**defaults)
 
@@ -66,7 +64,6 @@ class ProductViewTest(unittest.TestCase):
         data = {
             "name": "name",
             "description": "description",
-            "stock": "stock",
             "price": "price",
         }
         response = self.client.post(url, data=data)
@@ -83,7 +80,6 @@ class ProductViewTest(unittest.TestCase):
         data = {
             "name": "name",
             "description": "description",
-            "stock": "stock",
             "price": "price",
         }
         url = reverse('Product_product_update', args=[product.slug,])

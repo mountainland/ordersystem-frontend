@@ -50,8 +50,9 @@ class OrderCreateView(CreateView):
 
 
     def form_valid(self, form):
-        product_1 = Product.objects.get(slug__iexact='pipari')
-        product_2 = Product.objects.get(slug__iexact='feta')
+        print(form.is_valid())
+        product_1 = Product.objects.get(slug__iexact='feta')
+        product_2 = Product.objects.get(slug__iexact='pipari')
         product_3 = Product.objects.get(slug__iexact='mokkapala')
         form.instance.product_1 = product_1
         form.instance.product_2 = product_2
