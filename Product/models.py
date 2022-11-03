@@ -7,6 +7,8 @@ from django.utils import timezone
 from django_currentuser.db.models import CurrentUserField
 from Payment.models import Payment_method
 from City.models import City
+
+
 class Product(models.Model):
 
     # Fields
@@ -15,7 +17,7 @@ class Product(models.Model):
     category = models.CharField(max_length=255, blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True, editable=False)
     last_updated = models.DateTimeField(auto_now=True, editable=False)
-    description = models.TextField(blank=True, null=True)
+    description = models.CharField(max_length=200)
     price = models.FloatField(blank=True, null=True)
 
     class Meta:
