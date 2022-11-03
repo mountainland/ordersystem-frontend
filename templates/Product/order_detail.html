@@ -14,17 +14,8 @@
         <tr><td>Kaupunki</td><td>{{ object.city }}</td></tr>
         <tr><td>Toimitetaan</td><td>
             {% if not object.delivered %}
-                {% if object.city == 'Helsinki' %}
-                    <p class="text-warning">Helsingissä tilaukset toimitetaan xx.xx kello xx.xx ja xx.xx välillä</p>
-                {% elif object.city == 'Espoo' %}
-                    <p class="text-warning">Espoossa tilaukset toimitetaan xx.xx kello xx.xx ja xx.xx välillä</p>
-                {% elif object.city == 'Vantaa' %}
-                    <p class="text-warning">Vantaalla tilaukset toimitetaan xx.xx kello xx.xx ja xx.xx välillä</p>
-                {% elif object.city == 'Kauniainen' %}
-                    <p class="text-warning">Kauniaisissa tilaukset toimitetaan xx.xx kello xx.xx ja xx.xx välillä</p>
-                {% else %}
-                    <p class="text-warning">Kaupunkiasi ei ole kaupunki listassa, ota yhteyttä asiakaspalveluun</p>
-                {% endif %}
+            <p class="warning">Kaupungissa '{{object.city.name}}' ruoat toimitetaan {{object.city.delivery_date}}</p>
+            {% endif %}
         </td></tr>
         <tr><td>Toimitettu</td><td>
             {% if object.delivered %}

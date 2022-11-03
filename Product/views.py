@@ -40,18 +40,19 @@ class OrderCreateView(CreateView):
 
     def get_context_data(self,  object_list=None, **kwargs):
         context = super(OrderCreateView, self).get_context_data(**kwargs)
-        context['product_1'] = get_object_or_404(Product, slug="mokkapala")
-        context['product_2'] = get_object_or_404(Product, slug="pipari")
-        context['product_3'] = get_object_or_404(Product, slug="feta")
+        count = 1
+        for product in Product.objects.all():
+            context[f'product_{count}'] = product
+            count += 1
         context['Payment_method'] = Payment_method.objects.all()
         context["City"] = City.objects.all()
         return context
 
 
     def form_valid(self, form):
-        product_1 = Product.objects.get(slug__iexact='mokkapala')
-        product_2 = Product.objects.get(slug__iexact='pipari')
-        product_3 = Product.objects.get(slug__iexact='feta')
+        product_1 = Product.objects.get(slug__iexact='pipari')
+        product_2 = Product.objects.get(slug__iexact='feta')
+        product_3 = Product.objects.get(slug__iexact='mokkapala')
         form.instance.product_1 = product_1
         form.instance.product_2 = product_2
         form.instance.product_3 = product_3
