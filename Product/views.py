@@ -1,11 +1,10 @@
 from django.views.generic import DetailView, ListView, UpdateView, CreateView, TemplateView
-from .models import Product, Order
+from .models import Product, Order, Payment_method, City
 from .forms import OrderForm
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.contrib.admin.views.decorators import staff_member_required
-
 
 
 @method_decorator(login_required, name='dispatch')
@@ -44,6 +43,8 @@ class OrderCreateView(CreateView):
         context['product_1'] = get_object_or_404(Product, slug="mokkapala")
         context['product_2'] = get_object_or_404(Product, slug="pipari")
         context['product_3'] = get_object_or_404(Product, slug="feta")
+        context['Payment_method'] = Payment_method.objects.all()
+        context["City"] = City.objects.all()
         return context
 
 
