@@ -12,7 +12,7 @@
     {% for payment_method in Payment_method %}
        if(select.value=="{{payment_method.id}}"){
             {% for payment in Payment_method %}
-            document.getElementById('{{payment_method}}_div').style.display="none";
+            document.getElementById('{{payment}}_div').style.display="none";
             {% endfor %}
             document.getElementById('{{payment_method}}_div').style.display = "block";
        }
