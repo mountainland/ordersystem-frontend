@@ -8,9 +8,17 @@ from django.contrib.admin.views.decorators import staff_member_required
 
 PRODS = []
 
+BACKEND_URL = ""
+
 @method_decorator(login_required, name='dispatch')
-class ProductListView(ListView):
-    model = Product
+def ProductListView(request):
+    product_list = Product.objects.all()
+    products = request.get(BACKEND_URL + "/ordersystem/api?format=json")
+    products_data = products.json()
+    for product in products_data:
+        print(product) # TODO #74
+    context = {'product_list': product_list}
+    return render(request, 'product_list.html', context)
 
 @method_decorator(login_required, name='dispatch')
 class ProductDetailView(DetailView):
