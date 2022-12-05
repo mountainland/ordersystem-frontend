@@ -1,4 +1,4 @@
 Django
 django_currentuser
 django_extensions
-crispy_forms
+django_crispy_forms
