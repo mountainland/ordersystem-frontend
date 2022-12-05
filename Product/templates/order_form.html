@@ -7,6 +7,7 @@
     .center {text-align: center;align-self: center;}
 </style>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+{% if show_cities == True %}
 <script type="text/javascript">
     function showDiv(select){
     {% for payment_method in Payment_method %}
@@ -29,6 +30,7 @@
         {% endfor %}
     }
 </script>
+{% endif %}
 
 <div class="container">
     <div class="row">
@@ -38,15 +40,11 @@
             <form method="post">
             {% csrf_token %}
             <!-- MÄÄRÄ -->
-            <label for="id_count_1" class="control-label requiredField">{{product_1.name|lower}} määrä<span class="asteriskField">*</span></label>
-            <input type="number" name="count_1" value="0" class="form-control numberinput" onchange="calculateStuff();" min="0" max="1000" required id="id_count_1" pattern="\d*">
-            <p> Hinta {{product_1.price}}€</p>
-            <label for="id_count_2" class="control-label requiredField">{{product_2.name|lower}} määrä<span class="asteriskField">*</span></label>
-            <input type="number" name="count_2" value="0" class="form-control numberinput" onchange="calculateStuff();" min="0" max="1000" required id="id_count_2" pattern="\d*">
-            <p> Hinta {{product_2.price}}€</p>
-            <label for="id_count_3" class="control-label requiredField">{{product_3.name|lower}} määrä<span class="asteriskField">*</span></label>
-            <input type="number" name="count_3" value="0" class="form-control numberinput" onchange="calculateStuff();" min="0" max="1000" required id="id_count_3" pattern="\d*">
-            <p> Hinta {{product_3.price}}€</p>
+            {% for product in object_list %}
+            <label for="id_count_{product.id}" class="control-label requiredField">{{product.name|lower}} määrä<span class="asteriskField">*</span></label>
+            <input type="number" name="count_{{product.id}}" value="0" class="form-control numberinput" onchange="calculateStuff();" min="0" max="1000" required id="id_count_1" pattern="\d*">
+            <p> Hinta {{product.price}}€</p>
+            {% endfor %}
             <!-- TILAAJAN NIMI -->
             <label for="id_name" class="control-label requiredField">Tilaajan nimi<span class="asteriskField">*</span></label> 
             <input type="text" name="name" maxlength="255" class="form-control textinput textInput" required id="id_name">

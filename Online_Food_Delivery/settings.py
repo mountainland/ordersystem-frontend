@@ -28,6 +28,10 @@ DEBUG = True #54
 ALLOWED_HOSTS = ["*"]
 
 
+BACKEND_URL = "https://backend.example.com"
+
+SHOW_CITYS = False
+
 # Application definition
 
 INSTALLED_APPS = [
