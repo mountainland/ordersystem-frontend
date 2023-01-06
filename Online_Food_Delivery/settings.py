@@ -28,7 +28,7 @@ DEBUG = True #54
 ALLOWED_HOSTS = ["*"]
 
 
-BACKEND_URL = "https://backend.example.com"
+BACKEND_URL = "http://127.0.0.1:8000"
 
 SHOW_CITYS = False
 

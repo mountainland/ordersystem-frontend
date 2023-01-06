@@ -40,11 +40,9 @@
             <form method="post">
             {% csrf_token %}
             <!-- MÄÄRÄ -->
-            {% for product in object_list %}
-            <label for="id_count_{product.id}" class="control-label requiredField">{{product.name|lower}} määrä<span class="asteriskField">*</span></label>
-            <input type="number" name="count_{{product.id}}" value="0" class="form-control numberinput" onchange="calculateStuff();" min="0" max="1000" required id="id_count_1" pattern="\d*">
-            <p> Hinta {{product.price}}€</p>
-            {% endfor %}
+            <label for="id_count_1" class="control-label requiredField">Määrä<span class="asteriskField">*</span></label>
+            <input type="number" name="count_1" value="0" class="form-control numberinput" onchange="calculateStuff();" min="0" max="1000" required id="id_count_1" pattern="\d*">
+            <p> Hinta </p>
             <!-- TILAAJAN NIMI -->
             <label for="id_name" class="control-label requiredField">Tilaajan nimi<span class="asteriskField">*</span></label> 
             <input type="text" name="name" maxlength="255" class="form-control textinput textInput" required id="id_name">
