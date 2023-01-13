@@ -51,6 +51,7 @@ class ProductViewTest(unittest.TestCase):
     '''
     Tests for Product
     '''
+
     def setUp(self):
         self.client = Client()
 
@@ -91,6 +92,7 @@ class OrderViewTest(unittest.TestCase):
     '''
     Tests for Order
     '''
+
     def setUp(self):
         self.client = Client()
 
@@ -127,5 +129,3 @@ class OrderViewTest(unittest.TestCase):
         url = reverse('Product_order_update', args=[order.slug,])
         response = self.client.post(url, data)
         self.assertEqual(response.status_code, 302)
-
-
