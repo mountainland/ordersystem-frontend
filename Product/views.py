@@ -25,7 +25,7 @@ PRODUCTS_URL = PRODUCTS_URL
 ORDER_URL = BACKEND_URL + "/ordersystem/api"
 
 
-#@method_decorator(login_required, name='dispatch')
+# @method_decorator(login_required, name='dispatch')
 def get_data():
     product_list = []
     response = requests.get(PRODUCTS_URL)
@@ -34,6 +34,7 @@ def get_data():
         product_list.append(product(response))
         count += 1
     return count, product_list
+
 
 class ProductListView(ListView):
     model = Product
@@ -45,7 +46,6 @@ class ProductListView(ListView):
         context = {'object_list': product_list}
         return render(self.request, 'product_list.html', context=context)
 
-    
 
 @method_decorator(login_required, name='dispatch')
 class ProductDetailView(DetailView):
@@ -59,6 +59,7 @@ class OrderListView(ListView):
     def get_queryset(self):
         return Order.objects.all().filter(order_by=self.request.user)
 
+
 @method_decorator(staff_member_required, name='dispatch')
 class OrderAdminView(ListView):
     model = Order
@@ -67,13 +68,12 @@ class OrderAdminView(ListView):
         return Order.objects.all().filter(delivered=False)
 
 
-
 @method_decorator(login_required, name='dispatch')
 class OrderCreateView(CreateView):
     model = Order
     form_class = OrderForm
     success_url = '/order/conformed/'
-    
+
     def get_context_data(self, object_list=None, **kwargs):
         context = super(OrderCreateView, self).get_context_data(**kwargs)
         count = 1
@@ -81,12 +81,11 @@ class OrderCreateView(CreateView):
         for response in response.json():
             context[f'product_{count}'] = product(response)
             count += 1
-        
+
         context['Payment_method'] = Payment_method.objects.all()
         context["City"] = City.objects.all()
         context["show_cities"] = getattr(settings, "SHOW_CITYS", False)
         return context
-
 
     def form_valid(self, form):
         print(form.is_valid())
@@ -99,8 +98,8 @@ class OrderCreateView(CreateView):
         answer = requests.post(ORDER_URL, json=data)
         print(answer.text)
         print("Sent")
-        return super(OrderCreateView, self).form_valid(form)        
-        
+        return super(OrderCreateView, self).form_valid(form)
+
 
 @method_decorator(login_required, name='dispatch')
 class OrderDetailView(DetailView):
@@ -109,4 +108,3 @@ class OrderDetailView(DetailView):
 
 def order_conform(self):
     return render(self, 'Product/thanks.html')
-
