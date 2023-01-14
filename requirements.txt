@@ -106,7 +106,7 @@ platformdirs==2.0.2
 pluggy==0.13.1
 plyer==2.0.0
 premailer==3.10.0
-protobuf==3.0.0b2
+protobuf==3.18.3
 pusher==2.0.2
 py==1.11.0
 pyasn1==0.4.4
