@@ -31,7 +31,7 @@ jobs:
         # ADD YOUR CUSTOM DEPENDENCY UPGRADE COMMANDS BELOW
         run: |
           pip install -U pip pip-tools
-          pip-compile --upgrade -o requirements.txt requirements.txt
+          pip-compile --upgrade -o requirements.txt requirements.txt --resolver=backtracking
       # END PYTHON DEPENDENCIES
 
       - name: Detect changes
