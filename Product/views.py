@@ -1,5 +1,4 @@
 from django.views.generic import ListView, CreateView
-from Product.models import PaymentMethod, City
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
@@ -53,7 +52,6 @@ class OrderCreateView(CreateView):
             context[f'product_{count}'] = product(response)
             count += 1
 
-        context['PaymentMethod'] = PaymentMethod.objects.all()
         context['City'] = City.objects.all()
         context['ShowCities'] = getattr(settings, "SHOW_CITYS", False)
         return context
