@@ -7,15 +7,15 @@
     .center {text-align: center;align-self: center;}
 </style>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-{% if show_cities == True %}
+{% if ShowCities == True %}
 <script type="text/javascript">
     function showDiv(select){
-    {% for payment_method in Payment_method %}
-       if(select.value=="{{payment_method.id}}"){
-            {% for payment in Payment_method %}
+    {% for PaymentMethod in PaymentMethod %}
+       if(select.value=="{{PaymentMethod.id}}"){
+            {% for payment in PaymentMethod %}
             document.getElementById('{{payment}}_div').style.display="none";
             {% endfor %}
-            document.getElementById('{{payment_method}}_div').style.display = "block";
+            document.getElementById('{{PaymentMethod}}_div').style.display = "block";
        }
     {% endfor %}
     } 
@@ -67,11 +67,11 @@
                 {% endfor %}
             </select>
             <!-- MAKSUTAPA -->
-            <label for="id_payment_method" class="control-label requiredField">Maksutapa<span class="asteriskField">*</span></label>
-            <select name="payment_method" id="id_payment_method" class="form-control dropdown" onchange="showDiv(this)">
+            <label for="id_PaymentMethod" class="control-label requiredField">Maksutapa<span class="asteriskField">*</span></label>
+            <select name="PaymentMethod" id="id_PaymentMethod" class="form-control dropdown" onchange="showDiv(this)">
                 <option value="" selected disabled hidden>Valitse</option>
-                {% for payment_method in Payment_method %}
-                <option value="{{payment_method.id}}">{{payment_method}}</option>
+                {% for PaymentMethod in PaymentMethod %}
+                <option value="{{PaymentMethod.id}}">{{PaymentMethod}}</option>
                 {% endfor %}
             </select>
 
@@ -82,8 +82,8 @@
             <button type="submit" class="btn btn-primary  btn-lg btn-block">Tilaa</button>
             </form>
             <!-- MAKSUTAVAT -->
-            {% for payment_method in Payment_method %}
-            <div id="{{payment_method}}_div" class="w3-panel w3-yellow" style="display:none;">{{payment_method.info}}</div>
+            {% for PaymentMethod in PaymentMethod %}
+            <div id="{{PaymentMethod}}_div" class="w3-panel w3-yellow" style="display:none;">{{PaymentMethod.info}}</div>
             {% endfor %}
 
             <!-- KAUPUNGIT -->
