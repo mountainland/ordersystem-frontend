@@ -1,8 +1,8 @@
 from django.contrib import admin
 
-from .models import Payment_method
+from .models import PaymentMethod
 
-class Payment_methodAdmin(admin.ModelAdmin):
+class PaymentMethodAdmin(admin.ModelAdmin):
     list_display = ['name', 'display_name', 'info']
 
-admin.site.register(Payment_method, Payment_methodAdmin)
+admin.site.register(PaymentMethod, PaymentMethodAdmin)
