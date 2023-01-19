@@ -52,8 +52,6 @@ class OrderCreateView(CreateView):
             context[f'product_{count}'] = product(response)
             count += 1
 
-        context['City'] = City.objects.all()
-        context['ShowCities'] = getattr(settings, "SHOW_CITYS", False)
         return context
 
     def form_valid(self, form):
