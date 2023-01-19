@@ -31,7 +31,6 @@ TITLE = "Mountainland"
 
 BACKEND_URL = "http://127.0.0.1:8000"
 
-SHOW_CITYS = False
 
 # Application definition
 
