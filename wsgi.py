@@ -1,5 +1,5 @@
 """
-WSGI config for Online_Food_Delivery project.
+WSGI config for Ordersystem project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Online_Food_Delivery.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Ordersystem.settings')
 
 application = get_wsgi_application()
