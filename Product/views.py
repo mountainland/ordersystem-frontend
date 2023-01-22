@@ -5,7 +5,9 @@ from django.utils.decorators import method_decorator
 from django.conf import settings
 from Product.products import product
 
+
 import django
+
 
 import requests
 # pylint: disable=no-member, invalid-name
@@ -47,6 +49,7 @@ class ProductListView(ListView):
 class OrderCreateView(CreateView):
     success_url = '/order/conformed/'
     template_name = 'Product/order_form.html'
+    
     def get_context_data(self, object_list=None, **kwargs):
         context = dict()
         count = 1
@@ -71,8 +74,8 @@ class OrderCreateView(CreateView):
                 continue
             except django.utils.datastructures.MultiValueDictKeyError:
                 continue
-        print(data)
-        print(order)
+                
+                
         requests.post(ORDER_URL, json=data)
         context = {}
         return super(CreateView, self).render_to_response(context)

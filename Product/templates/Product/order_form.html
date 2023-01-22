@@ -7,30 +7,6 @@
     .center {text-align: center;align-self: center;}
 </style>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-{% if show_cities == True %}
-<script type="text/javascript">
-    function showDiv(select){
-    {% for payment_method in Payment_method %}
-       if(select.value=="{{payment_method.id}}"){
-            {% for payment in Payment_method %}
-            document.getElementById('{{payment}}_div').style.display="none";
-            {% endfor %}
-            document.getElementById('{{payment_method}}_div').style.display = "block";
-       }
-    {% endfor %}
-    } 
-    function cityt(select){
-        {% for city in City %}
-        if (select.value=="{{city.id}}"){
-            {% for city in City %}
-            document.getElementById("{{city.short}}").style.display = "none";
-            {% endfor %}
-            document.getElementById('{{city.short}}').style.display = "block";
-        }
-        {% endfor %}
-    }
-</script>
-{% endif %}
 
 <div class="container">
     <div class="row">
@@ -58,38 +34,12 @@
             <label for="id_postcode" class="control-label requiredField">Postinumero<span class="asteriskField">*</span></label>
             <input type="number" name="postcode" value="00500" class="form-control numberinput"  minlength="5"maxlenght="5" required id="id_postcode" pattern="\d*">
                         
-            <!-- KAUPUNKI -->
-            <label for="id_city" class="control-label requiredField">Kaupunki<span class="asteriskField">*</span></label>
-            <select name="city" id="id_city" class="form-control dropdown" onchange="cityt(this)">
-                <option value="" selected disabled hidden>Valitse kaupunki</option>
-                {% for city in City %}
-                <option value="{{city.id}}">{{city.name}}</option>
-                {% endfor %}
-            </select>
-            <!-- MAKSUTAPA -->
-            <label for="id_payment_method" class="control-label requiredField">Maksutapa<span class="asteriskField">*</span></label>
-            <select name="payment_method" id="id_payment_method" class="form-control dropdown" onchange="showDiv(this)">
-                <option value="" selected disabled hidden>Valitse</option>
-                {% for payment_method in Payment_method %}
-                <option value="{{payment_method.id}}">{{payment_method}}</option>
-                {% endfor %}
-            </select>
-
             <label for="id_information" class="control-label">Lisätiedot</label>
             <input name="information" id="id_information" class="form-control" id="id_information">
             <br>
             
             <button type="submit" class="btn btn-primary  btn-lg btn-block">Tilaa</button>
             </form>
-            <!-- MAKSUTAVAT -->
-            {% for payment_method in Payment_method %}
-            <div id="{{payment_method}}_div" class="w3-panel w3-yellow" style="display:none;">{{payment_method.info}}</div>
-            {% endfor %}
-
-            <!-- KAUPUNGIT -->
-            {% for city in City %}
-            <div id="{{city.short}}" class="w3-panel w3-blue" style="display:none;">Kaupungissa '{{city.name}}' ruoat toimitetaan {{city.delivery_date}}</div>
-            {% endfor %}
             <p>Summa: </p>
             <p id="sum"></p>
         </div>
