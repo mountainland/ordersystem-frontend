@@ -5,6 +5,10 @@ from django.utils.decorators import method_decorator
 from django.conf import settings
 from Product.products import product
 
+
+import django
+
+
 import requests
 # pylint: disable=no-member, invalid-name
 
@@ -26,6 +30,7 @@ def get_data():
     response = requests.get(PRODUCTS_URL)
     count = 0
     for response in response.json():
+        print(response)
         product_list.append(product(response))
         count += 1
     return count, product_list
@@ -43,9 +48,10 @@ class ProductListView(ListView):
 @method_decorator(login_required, name='dispatch')
 class OrderCreateView(CreateView):
     success_url = '/order/conformed/'
-
+    template_name = 'Product/order_form.html'
+    
     def get_context_data(self, object_list=None, **kwargs):
-        context = super(OrderCreateView, self).get_context_data(**kwargs)
+        context = dict()
         count = 1
         response = requests.get(PRODUCTS_URL)
         for response in response.json():
@@ -54,16 +60,25 @@ class OrderCreateView(CreateView):
 
         return context
 
-    def form_valid(self, form):
-        print(form.is_valid())
-
+    def post(self, request):
+        my_data = request.POST
         data = {"order": {}, "ready": False}
         order = data["order"]
         count, product_list = get_data()
-        for i in range(1, count):
-            order[f"{product_list[i].name}"] = f"{form[f'count_{i}'].value()}"
+        for i in range(0, count+1):
+            try:
+                print(i)
+                print(product_list[i].name, my_data[f'count_{i}'])
+                order[product_list[i].name] = my_data[f'count_{i}']
+            except IndexError:
+                continue
+            except django.utils.datastructures.MultiValueDictKeyError:
+                continue
+                
+                
         requests.post(ORDER_URL, json=data)
-        return super(OrderCreateView, self).form_valid(form)
+        context = {}
+        return super(CreateView, self).render_to_response(context)
 
 
 def order_conform(self):
