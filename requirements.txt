@@ -5,7 +5,9 @@
 #    pip-compile --output-file=requirements.txt --resolver=backtracking requirements.txt
 #
 asgiref==3.6.0
-    # via django
+    # via
+    #   -r requirements.txt
+    #   django
 django==3.2.16
     # via
     #   -r requirements.txt
