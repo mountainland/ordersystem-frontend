@@ -49,7 +49,7 @@ class ProductListView(ListView):
 class OrderCreateView(CreateView):
     success_url = '/order/conformed/'
     template_name = 'Product/order_form.html'
-    
+
     def get_context_data(self, object_list=None, **kwargs):
         context = dict()
         count = 1
@@ -74,8 +74,7 @@ class OrderCreateView(CreateView):
                 continue
             except django.utils.datastructures.MultiValueDictKeyError:
                 continue
-                
-                
+
         requests.post(ORDER_URL, json=data)
         context = {}
         return super(CreateView, self).render_to_response(context)
