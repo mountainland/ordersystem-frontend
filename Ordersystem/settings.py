@@ -23,11 +23,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '&sqk@a!t%ac87st%zz#o1pyr01n#h!=^$s55puawkjj!qy&l4f'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True #54
+DEBUG = True  # 54
 
 ALLOWED_HOSTS = ["*"]
 
-TITLE = "Mountainland"
+TITLE = "LuovaClub"
 
 BACKEND_URL = "http://127.0.0.1:8000"
 
@@ -132,7 +132,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
 
-MEDIA_URL = '/media/' #TODO #55 Remove all related to media folder
+MEDIA_URL = '/media/'  # TODO #55 Remove all related to media folder
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
