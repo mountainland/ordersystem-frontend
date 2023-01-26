@@ -8,6 +8,7 @@ from django.shortcuts import redirect
 
 USERMODEL = get_user_model()
 
+
 def SignUp(request):
     if (request.POST):
         signup_data = request.POST

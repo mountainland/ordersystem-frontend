@@ -10,13 +10,10 @@
               <div class="card-body">
                 <h5 class="card-title">{{object.name}}</h5>
                 <p class="card-text">{{object.price}}</p>
-                <a href="{% url 'Product_order_create' %}" class="btn btn-primary">Tilaa nyt</a>              </div>
+                <a href="{% url 'Product_order_create' %}" class="btn btn-primary">Tilaa nyt</a></div>
             </div>
         </div>
     {% endfor %}
 </div>
-<br>
-<br>
-<br>
 <br>
 {% endblock %}
