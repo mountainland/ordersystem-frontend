@@ -31,3 +31,4 @@ sqlparse==0.4.3
     # via
     #   -r requirements.txt
     #   django
+ordersystem-client @ git+https://github.com/mountainland/ordersystem-client@releases/0.1.0-beta#egg=ordersystem-client
