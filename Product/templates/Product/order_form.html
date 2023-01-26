@@ -12,27 +12,17 @@
     <div class="row">
         <div class="col-12">
 
-            <h2 class="center">Tilauslomake - LuovaClub kotiinkuljetuspalvelu</h2>
+            <h2 class="center">Tilauslomake - LuovaClub</h2>
             <form method="post">
             {% csrf_token %}
             <!-- MÄÄRÄ -->
             <label for="id_count_1" class="control-label requiredField">Määrä<span class="asteriskField">*</span></label>
             <input type="number" name="count_1" value="0" class="form-control numberinput" onchange="calculateStuff();" min="0" max="1000" required id="id_count_1" pattern="\d*">
             <p> Hinta </p>
-            <!-- TILAAJAN NIMI -->
-            <label for="id_name" class="control-label requiredField">Tilaajan nimi<span class="asteriskField">*</span></label> 
-            <input type="text" name="name" maxlength="255" class="form-control textinput textInput" required id="id_name">
+
             <!-- PUHELINNUMERO -->
             <label for="id_contact" class="control-label requiredField">Puhelinnumero<span class="asteriskField">*</span></label>
             <input type="text" name="contact" maxlength="10" class="form-control textinput textInput" required id="id_contact">
-            
-            <!-- OSOITE -->
-            <label for="id_address" class="control-label requiredField">Osoite<span class="asteriskField">*</span></label>
-            <input name="address" class="form-control textarea" required id="id_address"></input>
-            
-            <!-- POSTINUMERO -->
-            <label for="id_postcode" class="control-label requiredField">Postinumero<span class="asteriskField">*</span></label>
-            <input type="number" name="postcode" value="00500" class="form-control numberinput"  minlength="5"maxlenght="5" required id="id_postcode" pattern="\d*">
                         
             <label for="id_information" class="control-label">Lisätiedot</label>
             <input name="information" id="id_information" class="form-control" id="id_information">
