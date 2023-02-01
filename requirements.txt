@@ -8,7 +8,7 @@ asgiref==3.6.0
     # via
     #   -r requirements.txt
     #   django
-django==4.1.5
+django==4.1.6
     # via
     #   -r requirements.txt
     #   django-currentuser
