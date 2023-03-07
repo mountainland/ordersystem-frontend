@@ -9,16 +9,14 @@ Use with [backend](https://github.com/mountainland/ordersystem-backend/)
 
 ### For Windows
 ```shellscript
-git clone https://github.com/botsarefuture/foodthing.git
-cd Django-Online-Food-Delivery
+git clone https://github.com/mountainland/ordersystem-frontend.git
+cd ordersystem-frontend
 pip install -r requirements.txt
-python manage.py runserver
 ```
 
 ### For Ubuntu/ Linux
 ```shellscript
-git clone https://github.com/botsarefuture/foodthing.git
-cd Django-Online-Food-Delivery
+git clone https://github.com/mountainland/ordersystem-frontend.git
+cd ordersystem-frontend
 pip3 install -r requirements.txt
-python3 manage.py runserver
 ```
