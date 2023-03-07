@@ -4,8 +4,8 @@
 {% block content %}
 <p><a class="btn btn-default" href="{% url 'Product_product_list' %}">Tuote listaus</a></p>
 <form method="post">
-{% csrf_token %}
-{{form|crispy}}
-<button class="btn btn-primary" type="submit">Lähetä</button>
+    {% csrf_token %}
+    {{form|crispy}}
+    <button class="btn btn-primary" type="submit">Lähetä</button>
 </form>
 {% endblock %}

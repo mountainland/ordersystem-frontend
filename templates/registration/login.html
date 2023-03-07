@@ -4,26 +4,31 @@
 {% block content %}
 <h2>{{url}}</h2>
 <style>
-.center {text-align: center;align-self: center;}
+    .center {
+        text-align: center;
+        align-self: center;
+    }
 </style>
 <div class="container">
     <div class="row">
         <div class="col-12">
-        <div class="center">
-            <h2>Kirjaudu sisään</h2>
-        </div>
+            <div class="center">
+                <h2>Kirjaudu sisään</h2>
+            </div>
 
             <form method="post">
-            {% csrf_token %}
-            <label class="conrol-label requiredField" for="username">Käyttäjänimi<span class="asteriskField">*</span></label>
-            <input class="form-control input" name="username" required>
-            <label class="control-label requiredField" for="password">Salasana<span class="asteriskField">*</span></label>
-            <input type="password" class="form-control input" name="password" required> 
-            <br>
-            <br>
-            <button type="submit" class="btn btn-primary  btn-lg btn-block center">Kirjaudu sisään</button>
+                {% csrf_token %}
+                <label class="conrol-label requiredField" for="username">Käyttäjänimi<span
+                        class="asteriskField">*</span></label>
+                <input class="form-control input" name="username" required>
+                <label class="control-label requiredField" for="password">Salasana<span
+                        class="asteriskField">*</span></label>
+                <input type="password" class="form-control input" name="password" required>
+                <br>
+                <br>
+                <button type="submit" class="btn btn-primary  btn-lg btn-block center">Kirjaudu sisään</button>
             </form>
-    </div>
+        </div>
     </div>
 </div>
 {% endblock %}

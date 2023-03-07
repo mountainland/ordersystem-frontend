@@ -4,28 +4,35 @@
 {% block content %}
 <h2>{{url}}</h2>
 <style>
-    .center {text-align: center;align-self: center;}
+    .center {
+        text-align: center;
+        align-self: center;
+    }
 </style>
 <div class="container">
     <div class="row">
         <div class="col-12">
-        <div class="center">
-            <h2>Luo tili</h2>
-        </div>
+            <div class="center">
+                <h2>Luo tili</h2>
+            </div>
             <form method="post">
-            {% csrf_token %}
+                {% csrf_token %}
 
-            <label class="conrol-label requiredField" for="username">Käyttäjänimi<span class="asteriskField">*</span></label>
-            <input class="form-control input" name="username" required>
-            <label class="control-label requiredField" for="password">Salasana<span class="asteriskField">*</span></label>
-            <input type="password" class="form-control input" name="password1" required> 
-            <label class="control-label requiredField" for="password">Varmenna salasana<span class="asteriskField">*</span></label>
-            <input type="password" class="form-control input" name="password2" required>
-            <label class="control-label requiredField" for="signup_code">Tilin luontikoodi<span class="asteriskField">*</span></label>
-            <input class="form-control input" name="signup_code" required>
-            <br>
-            <br>
-            <button type="submit" class="btn btn-primary  btn-lg btn-block">Luo tili</button>
+                <label class="conrol-label requiredField" for="username">Käyttäjänimi<span
+                        class="asteriskField">*</span></label>
+                <input class="form-control input" name="username" required>
+                <label class="control-label requiredField" for="password">Salasana<span
+                        class="asteriskField">*</span></label>
+                <input type="password" class="form-control input" name="password1" required>
+                <label class="control-label requiredField" for="password">Varmenna salasana<span
+                        class="asteriskField">*</span></label>
+                <input type="password" class="form-control input" name="password2" required>
+                <label class="control-label requiredField" for="signup_code">Tilin luontikoodi<span
+                        class="asteriskField">*</span></label>
+                <input class="form-control input" name="signup_code" required>
+                <br>
+                <br>
+                <button type="submit" class="btn btn-primary  btn-lg btn-block">Luo tili</button>
             </form>
         </div>
     </div>

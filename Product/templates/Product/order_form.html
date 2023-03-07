@@ -4,7 +4,10 @@
 {% block content %}
 <h2>{{url}}</h2>
 <style>
-    .center {text-align: center;align-self: center;}
+    .center {
+        text-align: center;
+        align-self: center;
+    }
 </style>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
@@ -14,31 +17,36 @@
 
             <h2 class="center">Tilauslomake - LuovaClub</h2>
             <form method="post">
-            {% csrf_token %}
-            <!-- MÄÄRÄ -->
-            <label for="id_count_1" class="control-label requiredField">Määrä<span class="asteriskField">*</span></label>
-            <input type="number" name="count_1" value="0" class="form-control numberinput" onchange="calculateStuff();" min="0" max="1000" required id="id_count_1" pattern="\d*">
-            <p> Hinta </p>
+                {% csrf_token %}
+                <!-- MÄÄRÄ -->
+                <label for="id_count_1" class="control-label requiredField">Määrä<span
+                        class="asteriskField">*</span></label>
+                <input type="number" name="count_1" value="0" class="form-control numberinput"
+                    onchange="calculateStuff();" min="0" max="1000" required id="id_count_1" pattern="\d*">
+                <p> Hinta </p>
 
-            <!-- PUHELINNUMERO -->
-            <label for="id_contact" class="control-label requiredField">Puhelinnumero<span class="asteriskField">*</span></label>
-            <input type="text" name="contact" maxlength="10" class="form-control textinput textInput" required id="id_contact">
-                        
-            <label for="id_information" class="control-label">Lisätiedot</label>
-            <input name="information" id="id_information" class="form-control" id="id_information">
-            <br>
-            
-            <button type="submit" class="btn btn-primary  btn-lg btn-block">Tilaa</button>
+                <!-- PUHELINNUMERO -->
+                <label for="id_contact" class="control-label requiredField">Puhelinnumero<span
+                        class="asteriskField">*</span></label>
+                <input type="text" name="contact" maxlength="10" class="form-control textinput textInput" required
+                    id="id_contact">
+
+                <label for="id_information" class="control-label">Lisätiedot</label>
+                <input name="information" id="id_information" class="form-control" id="id_information">
+                <br>
+
+                <button type="submit" class="btn btn-primary  btn-lg btn-block">Tilaa</button>
             </form>
             <p>Summa: </p>
             <p id="sum"></p>
         </div>
     </div>
 </div>
-<script type="text/javascript">    
-    function calculateStuff(){
-    document.getElementById("sum").innerHTML = ((document.getElementById("id_count_1").value * {{ product_1.price }}) + (document.getElementById("id_count_2").value * {{ product_2.price }}) + (document.getElementById("id_count_3").value * {{ product_3.price }}));
+<script type="text/javascript">
+    function calculateStuff() {
+        document.getElementById("sum").innerHTML = ((document.getElementById("id_count_1").value * {{ product_1.price }
+    }) + (document.getElementById("id_count_2").value * {{ product_2.price }}) + (document.getElementById("id_count_3").value * {{ product_3.price }}));
 }
-document.getElementById("sum").innerHTML = ((document.getElementById("id_count_1").value * {{ product_1.price }}) + (document.getElementById("id_count_2").value * {{ product_2.price }}) + (document.getElementById("id_count_3").value * {{ product_3.price }}));
+    document.getElementById("sum").innerHTML = ((document.getElementById("id_count_1").value * {{ product_1.price }}) + (document.getElementById("id_count_2").value * {{ product_2.price }}) + (document.getElementById("id_count_3").value * {{ product_3.price }}));
 </script>
 {% endblock %}

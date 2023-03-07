@@ -5,14 +5,15 @@
 
 <div class="row">
     {% for object in object_list %}
-        <div class="col-md-3 text-center">
-            <div class="card" style="width: 18rem; margin-top:10px">
-              <div class="card-body">
+    <div class="col-md-3 text-center">
+        <div class="card" style="width: 18rem; margin-top:10px">
+            <div class="card-body">
                 <h5 class="card-title">{{object.name}}</h5>
                 <p class="card-text">{{object.price}}</p>
-                <a href="{% url 'Product_order_create' %}" class="btn btn-primary">Tilaa nyt</a></div>
+                <a href="{% url 'Product_order_create' %}" class="btn btn-primary">Tilaa nyt</a>
             </div>
         </div>
+    </div>
     {% endfor %}
 </div>
 <br>
